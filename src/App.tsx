@@ -5,7 +5,7 @@ import { Header } from "./components/Header";
 function App() {
   EventScroll();
   return (
-    <div className="bg-white">
+    <div className="h-full w-full bg-white">
       <Header />
       <div className="h-screen w-full bg-[#A67E4E]"></div>
       <EventScroll></EventScroll>
