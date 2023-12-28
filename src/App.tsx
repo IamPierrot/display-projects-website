@@ -1,9 +1,10 @@
+import { Header } from "./components/Header";
+
 function App() {
   return (
-    <div className="w-100 bg-black">
-      hello World
-      <p>Cá was here</p>
-      <p>Vẹt was here</p>
+    <div>
+      <Header/>
+      <div className="bg-[#A67E4E] w-full h-screen"></div>
     </div>
   );
 }
