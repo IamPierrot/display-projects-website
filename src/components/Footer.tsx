@@ -1,5 +1,5 @@
 const iconArray = [
-  <a href="" target="_blank">
+  <a href="https://www.facebook.com/groups/neyugang" target="_blank">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="36"
@@ -27,24 +27,59 @@ const iconArray = [
 
 export const Footer = () => {
   return (
-    <footer className=" h-64 justify-items-start bg-[rgba(255,32,35,0.22)] pl-10 pt-3">
+    <footer className=" h-64 w-full justify-between bg-[rgba(255,32,35,0.22)]  pl-10 pt-3 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
       <div className="flex w-fit space-x-4">
         {iconArray.map((value, index) => {
-          return <div key={index}>{value}</div>;
+          return (
+            <div className="hover:text-sky-600" key={index}>
+              {value}
+            </div>
+          );
         })}
       </div>
-      <div className="grid pt-5">
-        <h1>
-          <label className="text-pretty font-bold text-stone-900">
-            CONTACT US
-          </label>
-          <ul className="hover:font-blue transition delay-150 duration-300 ease-in-out">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-          </ul>
+      <div className="grid grid-cols-3 pt-5 font-mono">
+        <h1 className="text-pretty text-3xl font-extrabold">
+          <div className="w-fit">
+            <h1>YÊU ĐƯƠNG VỚ VẨN</h1>
+            <h1>LOVE IS NONSENSE</h1>
+            <hr className="h-1 bg-gray-700" />
+            <ul className="text-xl">
+              <li>Quote: @kry</li>
+
+              <li></li>
+            </ul>
+          </div>
         </h1>
+
+        <div>
+          <label className="text-pretty text-3xl font-bold text-stone-900">
+            CONTACT TO US
+          </label>
+          <ul className="hover:font-blue pt-5 transition delay-150 duration-300 ease-in-out">
+            <li className="">chomeo836@gmail.com</li>
+            <li className="">dinhuynhyen913@gmail.com</li>
+          </ul>
+        </div>
+
+        <div className="w-fit items-center justify-center text-pretty text-3xl font-bold text-stone-900">
+          <label>TOOLS AND TECHNOLOGIES</label>
+          <div className="pt-5">
+            <div className="">
+              <img
+                className=""
+                src="https://skillicons.dev/icons?i=ts,js,nodejs,c,cpp,py&theme=dark"
+                alt="Languages and Tools"
+              />
+            </div>
+            <div>
+              <img
+                className="pt-1"
+                src="https://skillicons.dev/icons?i=mongodb,git,github,vscode,stackoverflow,visualstudio&theme=dark"
+                alt="Languages and Tools"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   );
