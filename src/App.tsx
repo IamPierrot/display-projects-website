@@ -3,8 +3,9 @@ function App() {
     <div className="w-100 bg-black">
       hello World
       <p>Cá was here</p>
+      <p>Vẹt was here</p>
     </div>
-  )
+  );
 }
 
 export default App;
