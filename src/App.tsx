@@ -1,9 +1,12 @@
+import { Footer } from "./components/Footer";
+import { EventScroll } from "./utils/eventScroll";
+
 function App() {
+  EventScroll();
   return (
-    <div className="w-100 bg-black">
-      hello World
-      <p>Cá was here</p>
-      <p>Vẹt was here</p>
+    <div className="bg-white">
+      <EventScroll></EventScroll>
+      <Footer />
     </div>
   );
 }
