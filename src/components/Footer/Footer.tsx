@@ -27,7 +27,7 @@ const iconArray = [
 
 export const Footer = () => {
   return (
-    <footer className=" h-64 w-full justify-between bg-[--primary-footer-color]  pl-10 pt-3 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
+    <footer className=" h-64 w-full justify-between text-balance bg-[--primary-footer-color]  pl-10 pt-3 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
       <div className="flex w-fit space-x-4">
         {iconArray.map((value, index) => {
           return (
@@ -38,7 +38,7 @@ export const Footer = () => {
         })}
       </div>
       <div className="grid grid-cols-3 pt-5 font-mono">
-        <h1 className="text-pretty text-3xl font-extrabold">
+        <h1 className="text-pretty text-2xl font-extrabold">
           <div className="w-fit">
             <h1>YÊU ĐƯƠNG VỚ VẨN</h1>
             <h1>LOVE IS NONSENSE</h1>
@@ -52,29 +52,23 @@ export const Footer = () => {
 
         <div>
           <label className="text-pretty text-3xl font-bold text-stone-900">
-            CONTACT TO US
+            CONTACT
           </label>
           <ul className="hover:font-blue pt-5 transition delay-150 duration-300 ease-in-out">
             <li className="">chomeo836@gmail.com</li>
             <li className="">dinhuynhyen913@gmail.com</li>
-            <li></li>
+            <li className="whitespace-nowrap text-lg font-bold">
+              <button className="underline">SEND NOW&#8599;</button>
+            </li>
           </ul>
         </div>
 
         <div className="w-fit items-center justify-center text-pretty text-3xl font-bold text-stone-900">
-          <label>TOOLS AND TECHNOLOGIES</label>
+          <label>LANGUAGES & TOOLS</label>
           <div className="pt-5">
-            <div className="">
+            <div className="h-fit text-2xl">
               <img
-                className=""
-                src="https://skillicons.dev/icons?i=ts,js,nodejs,c,cpp,py&theme=dark"
-                alt="Languages and Tools"
-              />
-            </div>
-            <div>
-              <img
-                className="pt-1"
-                src="https://skillicons.dev/icons?i=mongodb,git,github,vscode,stackoverflow,visualstudio&theme=dark"
+                src="https://skillicons.dev/icons?i=ts,js,nodejs,cpp,py,vscode,visualstudio,github,git,discord&theme=dark&perline=5"
                 alt="Languages and Tools"
               />
             </div>
