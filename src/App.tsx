@@ -1,14 +1,15 @@
 import { Footer } from "./components/Footer";
 import { EventScroll } from "./utils/eventScroll";
 import { Header } from "./components/Header";
+import { Body } from "./components/Body";
 
 function App() {
   EventScroll();
   return (
     <div className="h-full w-full bg-white">
+      <EventScroll />
       <Header />
-      <div className="h-screen w-full bg-[#A67E4E]"></div>
-      <EventScroll></EventScroll>
+      <Body />
       <Footer />
     </div>
   );

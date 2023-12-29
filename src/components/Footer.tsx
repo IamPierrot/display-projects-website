@@ -27,11 +27,11 @@ const iconArray = [
 
 export const Footer = () => {
   return (
-    <footer className=" h-64 w-full justify-between bg-[rgba(255,32,35,0.22)]  pl-10 pt-3 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
+    <footer className=" h-64 w-full justify-between bg-[--primary-footer-color]  pl-10 pt-3 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
       <div className="flex w-fit space-x-4">
         {iconArray.map((value, index) => {
           return (
-            <div className="hover:text-sky-600" key={index}>
+            <div className="hover:text-sky-900" key={index}>
               {value}
             </div>
           );
@@ -45,8 +45,7 @@ export const Footer = () => {
             <hr className="h-1 bg-gray-700" />
             <ul className="text-xl">
               <li>Quote: @kry</li>
-
-              <li></li>
+              <li>Design: @kry</li>
             </ul>
           </div>
         </h1>
@@ -58,6 +57,7 @@ export const Footer = () => {
           <ul className="hover:font-blue pt-5 transition delay-150 duration-300 ease-in-out">
             <li className="">chomeo836@gmail.com</li>
             <li className="">dinhuynhyen913@gmail.com</li>
+            <li></li>
           </ul>
         </div>
 
