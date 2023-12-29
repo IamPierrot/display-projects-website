@@ -1,7 +1,7 @@
-import { Footer } from "./components/Footer";
+import { Footer } from "./components/Footer/Footer";
 import { EventScroll } from "./utils/eventScroll";
-import { Header } from "./components/Header";
-import { Body } from "./components/Body";
+import { Header } from "./components/Header/Header";
+import { Body } from "./components/Body/Body";
 
 function App() {
   EventScroll();
