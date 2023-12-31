@@ -7,7 +7,9 @@ export const Header = () => {
       <div className="cursor-pointer space-x-3 pr-10">
         <ul className="flex flex-row items-center justify-between space-x-5 p-1 font-[Poppins] text-[#fff]">
           <div className="group">
-            <li className="group-hover:text-[#A67E4E]">Home</li>
+            <li className="group-hover:text-[#A67E4E]">
+              <a href="/">Home</a>
+            </li>
           </div>
           <div className="group">
             <li className="group-hover:text-[#A67E4E]">
@@ -20,10 +22,14 @@ export const Header = () => {
             </li>
           </div>
           <div className="group">
-            <li className="group-hover:text-[#A67E4E]">Deo biet de cai gi</li>
+            <li className="group-hover:text-[#A67E4E]">
+              <a href="/Api">API</a>
+            </li>
           </div>
           <div className="group">
-            <li className="group-hover:text-[#A67E4E]">Team</li>
+            <li className="group-hover:text-[#A67E4E]">
+              <a href="/Team">TEAM</a>
+            </li>
           </div>
         </ul>
       </div>

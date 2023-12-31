@@ -1,10 +1,9 @@
 import { Footer } from "./components/Footer/Footer";
-import { EventScroll } from "./utils/eventScroll";
 import { Header } from "./components/Header/Header";
 import { Body } from "./components/Body/Body";
+import { EventScroll } from "./utils/eventScroll";
 
 function App() {
-  EventScroll();
   return (
     <div className="h-full w-full bg-white">
       <EventScroll />
