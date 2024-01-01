@@ -1,6 +1,6 @@
 export const Header = () => {
   return (
-    <header className="sticky flex w-full flex-row items-center justify-between bg-[--primary-header-color] p-4 font-bold text-black shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]">
+    <header className="fixed flex w-full flex-row items-center justify-between bg-[--primary-header-color] p-4 font-bold text-black shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]">
       <div className="cursor-pointer">
         <h1 className="text-[#fff]">Logo Vjp Pro</h1>
       </div>
