@@ -1,3 +1,3 @@
 export const Team = () => {
-  return <div></div>;
+  return <div>Hello</div>;
 };

@@ -7,7 +7,6 @@ export const Body = () => {
       <BrowserRouter>
         <Navigation></Navigation>
       </BrowserRouter>
-      <div className="h-28 w-full"></div>
     </div>
   );
 };
