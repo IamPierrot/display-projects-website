@@ -1,3 +1,7 @@
 export const Page = () => {
-  return <div></div>;
+  return (
+    <div>
+      <h1 className="text-white text-center pt-2">DM REACT PAGE</h1>
+    </div>
+  )
 };
