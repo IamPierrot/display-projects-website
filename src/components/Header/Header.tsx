@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const [active, setActive] = useState("HOME");
+  const [active, setActive] = useState("HOME"); 
+  const [styleStickMenu, setStyleStickMenu] = useState("");
+  const [styleLink, setStyleLink] = useState("");
 
   let items = [
     { name: "HOME", link: "/"},
@@ -11,8 +13,27 @@ export const Header = () => {
     { name: "API", link: "/api"},
     { name: "TEAM", link: "/team"},
   ]
+  useEffect(() => {
+    const handleStickMenu = () => {
+      if (document.body.scrollTop >= 200 || document.documentElement.scrollTop >= 200) {
+        setStyleStickMenu("sticky z-50 bg-[--primary-header1-color] shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] transition-all ease-in-out duration-500");
+        setStyleLink("transition-all ease-in-out duration-500");
+      }
+      else {
+        setStyleStickMenu("");
+        setStyleLink("");
+      }
+    }
+
+    window.addEventListener("scroll", handleStickMenu);
+
+    return () => {
+      window.removeEventListener("scroll", handleStickMenu);
+    };
+  }, [])
+
   return (
-    <nav className="sticky top-0 z-50 flex w-full h-[60px] flex-row items-center justify-between bg-[--primary-header-color] p-4 font-bold text-white shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]">
+    <nav className={`top-0 flex w-full h-[60px] flex-row items-center justify-between p-4 font-bold font-mono text-white ${styleStickMenu}`}>
       <div className="ml-10 cursor-pointer">
         <Link to="/">
           <img 
@@ -41,9 +62,10 @@ export const Header = () => {
             </svg>
         </div> */}
         <ul className="flex justify-between items-center gap-8">
-          { items.map(i => (
+          { items.map((i, key) => (
             <li 
-              className={`hover:text-[#5facf9] transition duration-200 ${active === i.name ? 'text-[#5facf9]' : 'text-[#fff]'}`}
+              key={key}
+              className={`hover:text-[#5facf9] transition duration-200 ${active === i.name ? 'text-[#5facf9]' : 'text-[#fff]'} ${styleLink}`}
               onClick={() => setActive(i.name)}
             >
               <Link to={i.link} >{i.name}</Link>
