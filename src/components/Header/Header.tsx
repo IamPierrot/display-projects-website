@@ -20,7 +20,7 @@ export const Header = () => {
         document.documentElement.scrollTop >= 200
       ) {
         setStyleStickMenu(
-          "sticky z-50 bg-[--primary-header-color] shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] transition-all ease-in-out duration-500",
+          "sticky z-50 bg-[--primary-header1-color] shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] transition-all ease-in-out duration-500",
         );
         setStyleLink("transition-all ease-in-out duration-500");
       } else {
