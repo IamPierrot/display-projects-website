@@ -1,3 +1,5 @@
 export const Api = () => {
-  return <div className="flex font-bold"></div>;
+  return (
+    <h1 className="text-white text-center pt-2">DM REACT API PAGE</h1>
+  )
 };

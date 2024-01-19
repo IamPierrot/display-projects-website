@@ -27,7 +27,7 @@ const iconArray = [
 
 export const Footer = () => {
   return (
-    <footer className=" h-64 w-full justify-between text-balance bg-[--primary-footer-color]  pl-10 pt-3 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
+    <footer className="mt-auto h-64 w-full justify-between text-balance bg-[--primary-footer-color]  pl-10 pt-3 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
       <div className="flex w-fit space-x-4">
         {iconArray.map((value, index) => {
           return (
