@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-     --primary-header-color: #324A56;
-     --primary-footer-color: rgb(157, 169, 185);
+     --primary-header-color: #172647;
+     --primary-footer-color: #748DB5;
 }

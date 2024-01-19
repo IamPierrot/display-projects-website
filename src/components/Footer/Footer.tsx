@@ -42,7 +42,7 @@ export const Footer = () => {
           <div className="w-fit">
             <h1>YÊU ĐƯƠNG VỚ VẨN</h1>
             <h1>LOVE IS NONSENSE</h1>
-            <hr className="h-1 bg-gray-700" />
+            <hr className="h-1 bg-gray-700"></hr>
             <ul className="text-xl">
               <li>Quote: @kry</li>
               <li>Design: @kry</li>
