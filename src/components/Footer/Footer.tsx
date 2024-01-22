@@ -41,8 +41,7 @@ export const Footer = () => {
         <h1 className="text-pretty text-2xl font-extrabold">
           <div className="w-fit">
             <h1>YÊU ĐƯƠNG VỚ VẨN</h1>
-            <h1>LOVE IS NONSENSE</h1>
-            <hr className="h-1 bg-gray-700"></hr>
+            <h1 className="w-fit border-b-2 border-black">LOVE IS NONSENSE</h1>
             <ul className="text-xl">
               <li>Quote: @kry</li>
               <li>Design: @kry</li>
