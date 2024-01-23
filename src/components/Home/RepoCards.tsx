@@ -9,18 +9,18 @@ interface RepoCardsProp {
   desc: string | null;
   star: number | undefined;
   fork: number | undefined;
+  repoUrl: string;
 }
 
 export const RepoCards = () => {
     const [repos, setRepos] = useState<RepoCardsProp[]>([]);
-
     useEffect(() => {
       const repositories: RepoCardsProp[] = [];
       getAllRespo().then((rs) => {
         for(const [author, repos] of Object.entries(rs)) {
           for (const repo of repos) {
             repo.map((i, index) => {
-              if (!repo[index].fork) {
+              if (!repo[index].fork && !repo[index].private) {
                 repositories.push({
                   id: repo[index].id,
                   author: author,
@@ -29,13 +29,12 @@ export const RepoCards = () => {
                   desc: repo[index].description,
                   star: repo[index].stargazers_count,
                   fork: repo[index].forks_count,
+                  repoUrl: repo[index].html_url,
                 })
               }
             });
-            console.log(repo);
           }
         }
-        console.log(repositories);
         setRepos(repositories);
       });
     }, []);
@@ -45,8 +44,18 @@ export const RepoCards = () => {
         <h1 className="text-white text-center pt-5 pb-2 font-mono text-2xl">OUR REPOSITORIES</h1>
         <div className="flex flex-wrap justify-center gap-8 m-4">
           {repos.map((i) => (
-            <div key={i.id} className="relative w-[300px] h-[200px] bg-white font-mono rounded-xl cursor-pointer hover:scale-110 transition duration-300 hover:shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]">
-              <div className="absolute flex items-center justify-center w-full h-full px-2">
+            <div key={i.id} className="group relative w-72 h-52 bg-white font-mono rounded-xl hover:scale-105 duration-300 hover:shadow-[4.0px_10.0px_8.0px_rgba(0,0,0,0.8)]">
+              <div className="absolute flex items-center justify-center w-full h-full px-2 invisible group-hover:visible disabled">
+                  <a href={i.repoUrl} target="_blank">
+                    <button 
+                      className="border-2 border-solid border-black py-2 px-3 rounded-2xl bg-[--primary-header1-color] text-white font-mono hover:shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]"
+                      
+                    >
+                      View Source
+                    </button> 
+                  </a>
+              </div>
+              <div className="absolute flex items-center justify-center w-full h-full px-2 group-hover:invisible">
                 <h1 className="text-center pt-2">{i.desc}</h1>
               </div>
               <div className="flex items-center gap-2 font-bold pt-2 pl-2">
