@@ -6,11 +6,11 @@ import { EventScroll } from "./utils/eventScroll";
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen w-full bg-gradient-to-b from-[#344161] to-[#38466D] to-25%">
+    <div className="relative flex min-h-screen w-full flex-col bg-gradient-to-b from-[#344161] to-[#38466D] to-25%">
       <Router>
         <EventScroll />
         <Header />
-        <Navigation/>
+        <Navigation />
         <Footer />
       </Router>
     </div>
