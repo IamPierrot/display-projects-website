@@ -9,73 +9,75 @@ interface RepoCardsProp {
   desc: string | null;
   star: number | undefined;
   fork: number | undefined;
+  repoUrl: string;
 }
 
 export const RepoCards = () => {
-  const [repos, setRepos] = useState<RepoCardsProp[]>([]);
-
-  useEffect(() => {
-    const repositories: RepoCardsProp[] = [];
-    getAllRespo().then((rs) => {
-      for (const [author, repos] of Object.entries(rs)) {
-        for (const repo of repos) {
-          repo.map((i, index) => {
-            if (!repo[index].fork && !repo[index].private) {
-              repositories.push({
-                id: repo[index].id,
-                author: author,
-                avatarUrl: repo[index].owner.avatar_url,
-                repoTitle: repo[index].name,
-                desc: repo[index].description,
-                star: repo[index].stargazers_count,
-                fork: repo[index].forks_count,
-              });
-            }
-          });
-          console.log(repo);
+    const [repos, setRepos] = useState<RepoCardsProp[]>([]);
+    useEffect(() => {
+      const repositories: RepoCardsProp[] = [];
+      getAllRespo().then((rs) => {
+        for(const [author, repos] of Object.entries(rs)) {
+          for (const repo of repos) {
+            repo.map((i, index) => {
+              if (!repo[index].fork && !repo[index].private) {
+                repositories.push({
+                  id: repo[index].id,
+                  author: author,
+                  avatarUrl: repo[index].owner.avatar_url,
+                  repoTitle: repo[index].name,
+                  desc: repo[index].description,
+                  star: repo[index].stargazers_count,
+                  fork: repo[index].forks_count,
+                  repoUrl: repo[index].html_url,
+                })
+              }
+            });
+          }
         }
-      }
-      console.log(repositories);
-      setRepos(repositories);
-    });
-  }, []);
+        setRepos(repositories);
+      });
+    }, []);
 
   return (
     <div className="flex flex-col">
-      <h1 className="pb-2 pt-5 text-center font-mono text-2xl text-white">
-        OUR REPOSITORIES
-      </h1>
-      <div className="m-4 flex flex-wrap justify-center gap-8">
-        {repos.map((i) => (
-          <div
-            key={i.id}
-            className="relative h-[200px] w-[300px] cursor-pointer rounded-xl bg-white font-mono transition duration-300 hover:scale-110 hover:shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]"
-          >
-            <div className="absolute flex h-full w-full items-center justify-center px-2">
-              <h1 className="pt-2 text-center">{i.desc}</h1>
-            </div>
-            <div className="flex items-center gap-2 pl-2 pt-2 font-bold">
-              <img
-                src={i.avatarUrl}
-                alt="author image"
-                className="h-8 w-8 rounded-[50%]"
-              />
-              <h1>{i.author}</h1>
-            </div>
-            <div className="text-center text-base font-bold tracking-widest">
-              <u>
-                <h1>{i.repoTitle}</h1>
-              </u>
-            </div>
-            <div className="absolute bottom-0 mb-1.5 flex w-full pl-2">
-              <span className="flex items-center gap-1">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  className="h-6 w-6"
+        <h1 className="text-white text-center pt-5 pb-2 font-mono text-2xl">OUR REPOSITORIES</h1>
+        <div className="flex flex-wrap justify-center gap-8 m-4">
+          {repos.map((i) => (
+            <div key={i.id} className="group relative w-72 h-52 bg-white font-mono rounded-xl hover:scale-105 duration-300 hover:shadow-[4.0px_10.0px_8.0px_rgba(0,0,0,0.8)]">
+              <div className="absolute flex items-center justify-center w-full h-full px-2 invisible group-hover:visible disabled">
+                  <a href={i.repoUrl} target="_blank">
+                    <button 
+                      className="border-2 border-solid border-black py-2 px-3 rounded-2xl bg-[--primary-header1-color] text-white font-mono hover:shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]"
+                      
+                    >
+                      View Source
+                    </button> 
+                  </a>
+              </div>
+              <div className="absolute flex items-center justify-center w-full h-full px-2 group-hover:invisible">
+                <h1 className="text-center pt-2">{i.desc}</h1>
+              </div>
+              <div className="flex items-center gap-2 font-bold pt-2 pl-2">
+                <img 
+                  src={i.avatarUrl} 
+                  alt="author image" 
+                  className="w-8 h-8 rounded-[50%]"              
+                />
+                <h1>{i.author}</h1>
+              </div>
+              <div className="text-center font-bold text-base tracking-widest">
+                <u>
+                  <h1>{i.repoTitle}</h1>
+                </u>
+              </div>
+              <div className="absolute w-full bottom-0 mb-1.5 flex pl-2">
+                <span className="flex items-center gap-1">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  fill="none" viewBox="0 0 24 24" 
+                  stroke-width="1.5" stroke="currentColor" 
+                  className="w-6 h-6"
                 >
                   <path
                     stroke-linecap="round"
