@@ -1,10 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { Link } from "react-router-dom";
 
-export const Header = () => {
-  const [active, setActive] = useState("HOME");
+export const Header = memo(() => {
   const [styleStickMenu, setStyleStickMenu] = useState("");
   const [styleLink, setStyleLink] = useState("");
+
+  const [active, setActive] = useState(() => {
+    const storedActive = localStorage.getItem("activeTab");
+    return storedActive || "HOME";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("activeTab", active);
+  }, [active]);
 
   const items = [
     { name: "HOME", link: "/" },
@@ -68,4 +76,4 @@ export const Header = () => {
       </nav>
     </>
   );
-};
+});
