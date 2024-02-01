@@ -22,7 +22,6 @@ export default {
       require('@tailwindcss/aspect-ratio'),
       require('@tailwindcss/forms'),
       require('@tailwindcss/typography'),
-      require('@fortawesome/fontawesome-free')
-
+      require('@fortawesome/fontawesome-free'),
      ],
    }

@@ -133,8 +133,8 @@ export const Page = () => {
         <div className="">
           <h1 className="border-b-2 text-2xl ">Kry's Websites</h1>
           <ul className="flex gap-4">
-            {websiteOfFish.map((value, i) => (
-              <a key={i} href={value.link} className="h-full w-full">
+            {websiteOfFish.map((value, index) => (
+              <a href={value.link} key={index * 100} className="h-full w-full">
                 {renderCard(value)}
               </a>
             ))}
