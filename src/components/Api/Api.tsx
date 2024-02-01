@@ -11,7 +11,7 @@ export const Api = () => {
           placeholder="API URL"
           className="!important flex-grow rounded-r border-none bg-gray-600 py-2 placeholder-white focus:outline-0 focus:ring-0"
         />
-        <button className="rounded-e-3xl border-l px-4 py-2 text-white hover:bg-blue-400">
+        <button className="rounded-e-3xl border-l px-4 py-2 text-white hover:bg-blue-400 duration-300">
           Send Request
         </button>
       </div>

@@ -1,19 +1,13 @@
 import { useEffect, useState } from "react";
 import getAllRespo from "../../utils/getOurRepositories";
-
-interface RepoCardsProp {
-  id: number;
-  author: string;
-  avatarUrl: string;
-  repoTitle: string;
-  desc: string | null;
-  star: number | undefined;
-  fork: number | undefined;
-  repoUrl: string;
-}
+import { ModalCard } from "../../utils/ModalCard";
+import { RepoCardsProp } from "../Page/wesiteType";
 
 export const RepoCards = () => {
     const [repos, setRepos] = useState<RepoCardsProp[]>([]);
+    const [showModal, setShowModal] = useState<boolean>(false);
+    const [selectedRepo, setSelectedRepo] = useState<RepoCardsProp | null>();
+
     useEffect(() => {
       const repositories: RepoCardsProp[] = [];
       getAllRespo().then((rs) => {
@@ -30,6 +24,8 @@ export const RepoCards = () => {
                   star: repo[index].stargazers_count,
                   fork: repo[index].forks_count,
                   repoUrl: repo[index].html_url,
+                  language: repo[index].language,
+                  create_at: repo[index].created_at
                 })
               }
             });
@@ -39,25 +35,27 @@ export const RepoCards = () => {
       });
     }, []);
 
+    const handleShowModal = (repo: RepoCardsProp) => {
+      setShowModal(!showModal);
+      setSelectedRepo(repo);
+    }
+
+    const handleCloseModal = () => {
+      setShowModal(false);
+      setSelectedRepo(null);
+    }
+
+    const title: string = "Details of this repository";
+
   return (
     <div className="flex flex-col">
         <h1 className="text-white text-center pt-5 pb-2 font-mono text-2xl">OUR REPOSITORIES</h1>
         <div className="flex flex-wrap justify-center gap-8 m-4">
           {repos.map((i) => (
-            <div key={i.id} className="group relative w-72 h-52 bg-white font-mono rounded-xl hover:scale-105 duration-300 hover:shadow-[4.0px_10.0px_8.0px_rgba(0,0,0,0.8)]">
-              <div className="absolute flex items-center justify-center w-full h-full px-2 invisible group-hover:visible disabled">
-                  <a href={i.repoUrl} target="_blank">
-                    <button 
-                      className="border-2 border-solid border-black py-2 px-3 rounded-2xl bg-[--primary-header1-color] text-white font-mono hover:shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]"
-                      
-                    >
-                      View Source
-                    </button> 
-                  </a>
-              </div>
-              <div className="absolute flex items-center justify-center w-full h-full px-2 group-hover:invisible">
-                <h1 className="text-center pt-2">{i.desc}</h1>
-              </div>
+            <div key={i.id} 
+              className="cursor-pointer relative w-72 h-52 bg-white font-mono rounded-xl hover:scale-105 duration-300 hover:shadow-[4.0px_10.0px_8.0px_rgba(0,0,0,0.8)]"
+              onClick={() => handleShowModal(i)}
+            >
               <div className="flex items-center gap-2 font-bold pt-2 pl-2">
                 <img 
                   src={i.avatarUrl} 
@@ -106,6 +104,7 @@ export const RepoCards = () => {
             </div>
           </div>
         ))}
+        <ModalCard visible={showModal} close={handleCloseModal} title={title} desc={selectedRepo?.desc} create_at={selectedRepo?.create_at} language={selectedRepo?.language}/>
       </div>
     </div>
   );
