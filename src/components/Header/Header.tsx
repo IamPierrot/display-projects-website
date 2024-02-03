@@ -1,5 +1,12 @@
 import { useState, useEffect, memo } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHouse,
+  faPager,
+  faCode,
+  faMugHot,
+} from "@fortawesome/free-solid-svg-icons";
 
 export const Header = memo(() => {
   const [styleStickMenu, setStyleStickMenu] = useState("");
@@ -19,11 +26,12 @@ export const Header = memo(() => {
   }, [active]);
 
   const items = [
-    { name: "HOME", link: "/" },
-    { name: "PAGE", link: "/page" },
-    { name: "API", link: "/api" },
-    { name: "TEAM", link: "/team" },
+    { name: "Home", icon: <FontAwesomeIcon icon={faHouse} />, link: "/" },
+    { name: "Page", icon: <FontAwesomeIcon icon={faPager} />, link: "/page" },
+    { name: "Api", icon: <FontAwesomeIcon icon={faCode} />, link: "/api" },
+    { name: "Team", icon: <FontAwesomeIcon icon={faMugHot} />, link: "/team" },
   ];
+
   useEffect(() => {
     const handleStickMenu = () => {
       if (
@@ -31,7 +39,7 @@ export const Header = memo(() => {
         document.documentElement.scrollTop >= 200
       ) {
         setStyleStickMenu(
-          "sticky z-50 bg-[--primary-header1-color] shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] transition-all ease-in-out duration-500",
+          "sticky z-50 bg-white border-b border-slate-900/10 transition-all ease-in-out duration-500",
         );
         setStyleLink("transition-all ease-in-out duration-500");
       } else {
@@ -48,36 +56,40 @@ export const Header = memo(() => {
   }, []);
 
   return (
-    <>
-      <nav
-        className={`top-0 flex h-[60px] w-full flex-row items-center justify-between p-4 font-mono font-bold text-white ${styleStickMenu}`}
-      >
-        <div className="ml-10 cursor-pointer">
-          <Link to="/">
+    <nav
+      className={`top-0 flex h-[60px] w-full items-center text-base font-semibold text-neutral-900 ${styleStickMenu}`}
+    >
+      <div className="mx-auto flex w-full max-w-screen-xl flex-row items-center justify-between px-3">
+        <div className=" cursor-pointer">
+          <Link to="/" onClick={() => setActive("HOME")}>
             <img
               src="../../src/assets/logo.jpg"
               alt="logo image"
               className="h-10 w-full rounded-[50%]"
-              onClick={() => setActive("HOME")}
             />
           </Link>
         </div>
-        <div className="pr-15 mr-12 cursor-pointer space-x-3">
-          <ul className="flex items-center justify-between gap-8">
+        <div className="cursor-pointer">
+          <ul className="flex items-center justify-between gap-10">
             {items.map((i, key) => (
               <li
                 key={key}
                 className={`transition duration-200 hover:text-[#5facf9] ${
-                  active === i.name ? "text-[#5facf9]" : "text-[#fff]"
+                  active === i.name ? "text-cyan-600" : "text-neutral-900"
                 } ${styleLink}`}
                 onClick={() => setActive(i.name)}
               >
-                <Link to={i.link}>{i.name}</Link>
+                <Link to={i.link}>
+                  <div className="flex items-center gap-2">
+                    {i.icon}
+                    {i.name}
+                  </div>
+                </Link>
               </li>
             ))}
           </ul>
         </div>
-      </nav>
-    </>
+      </div>
+    </nav>
   );
 });
