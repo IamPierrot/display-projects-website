@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 
 export const EventScroll = () => {
@@ -24,9 +26,9 @@ export const EventScroll = () => {
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
         title="Go To Top"
-        className="fixed bottom-8 right-8 z-50 h-16 w-16 animate-bounce rounded-full border-0 bg-indigo-500 text-3xl font-bold text-white drop-shadow-md transition delay-150 duration-300 ease-in-out hover:-translate-y-2 hover:scale-110 hover:animate-none"
+        className="fixed bottom-8 right-8 z-50 size-12 animate-bounce rounded-2xl border-0 bg-cyan-300 text-xl font-bold text-neutral-900 drop-shadow-md transition delay-150 duration-300 ease-in-out hover:bg-cyan-400"
       >
-        &uarr;
+        <FontAwesomeIcon icon={faArrowUp} />
       </button>
     )
   );

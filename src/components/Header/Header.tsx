@@ -74,7 +74,7 @@ export const Header = memo(() => {
             {items.map((i, key) => (
               <li
                 key={key}
-                className={`transition duration-200 hover:text-[#5facf9] ${
+                className={`transition duration-200 hover:text-cyan-600 ${
                   active === i.name ? "text-cyan-600" : "text-neutral-900"
                 } ${styleLink}`}
                 onClick={() => setActive(i.name)}
