@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import getAllRespo from "../../utils/getOurRepositories";
 import { ModalCard } from "../../utils/ModalCard";
-import { RepoCardsProp } from "../Page/wesiteType";
+import { RepoCardsProp } from "../..";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCodeFork, faStar } from "@fortawesome/free-solid-svg-icons";
 
@@ -14,7 +14,7 @@ export const RepoCards = () => {
     getAllRespo().then((rs) => {
       for (const [author, repos] of Object.entries(rs)) {
         for (const repo of repos) {
-          repo.map((i, index) => {
+          repo.map((_, index) => {
             if (!repo[index].fork && !repo[index].private) {
               repositories.push({
                 id: repo[index].id,
@@ -49,7 +49,7 @@ export const RepoCards = () => {
   const title: string = "Details of this repository";
 
   return (
-    <div className="flex flex-col">
+    <div className="font-default flex flex-col pb-6">
       <div className="mb-8 text-center ">
         <h1 className="mb-3 text-4xl font-extrabold text-neutral-900">
           Product exhibition space

@@ -27,7 +27,7 @@ const iconArray = [
 
 export const Footer = () => {
   return (
-    <footer className="mt-auto h-64 w-full justify-between text-balance bg-[--primary-footer-color]  pl-10 pt-3 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
+    <footer className="font-default mt-auto h-64 w-full justify-between text-balance bg-[--primary-footer-color]  pl-10 pt-3 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
       <div className="flex w-fit space-x-4">
         {iconArray.map((value, index) => {
           return (
@@ -37,7 +37,7 @@ export const Footer = () => {
           );
         })}
       </div>
-      <div className="grid grid-cols-3 pt-5 font-mono">
+      <div className="font-default grid grid-cols-3 pt-5">
         <h1 className="text-pretty text-2xl font-extrabold">
           <div className="w-fit">
             <h1>YÊU ĐƯƠNG VỚ VẨN</h1>
