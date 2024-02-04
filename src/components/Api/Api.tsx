@@ -14,6 +14,7 @@ export const Api = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [method, setMethod] = useState("GET");
   const [body, setBody] = useState("");
+  isLoading;
 
   const updateHeader = (index: number, key: string, value: string) => {
     const updatedHeaders = [...headers];
@@ -30,12 +31,40 @@ export const Api = () => {
 
   const handleCallApi = async () => {
     setIsLoading(true);
+    const validateAndNormalizeUrl = (url: string): string | null => {
+      if (!url) {
+        return null; // Handle empty URLs
+      }
 
-    if (!url) return setReponseData(`invalid url input`);
-    let URL: string = url;
-    if (!url.startsWith("https://")) URL = "https://" + url;
+      // Construct a URL object for validation and normalization
+      const parsedUrl = new URL(url);
+
+      // Validate protocol
+      if (!parsedUrl.protocol.startsWith("http")) {
+        return null; // Only allow HTTP or HTTPS protocols
+      }
+
+      // Normalize protocol to HTTPS if not specified
+      parsedUrl.protocol = parsedUrl.protocol.startsWith("https")
+        ? "https:"
+        : "http:";
+
+      // Normalize hostname to lowercase
+      parsedUrl.hostname = parsedUrl.hostname.toLowerCase();
+
+      // Ensure trailing slash for consistency (optional)
+      if (!parsedUrl.pathname.endsWith("/")) {
+        parsedUrl.pathname += "/";
+      }
+
+      // Return the normalized URL string
+      return parsedUrl.toString();
+    };
+    const normalizedUrl = validateAndNormalizeUrl(url);
+    console.log(normalizedUrl);
+    if (!normalizedUrl) throw setReponseData("Invalid Url Input!");
     try {
-      const response = await fetch(URL, {
+      const response = await fetch(normalizedUrl, {
         method: method, // Adjust method as needed
         headers: headers.reduce(
           (obj, header) => Object.assign(obj, { [header.key]: header.value }),
@@ -46,7 +75,6 @@ export const Api = () => {
             ? JSON.stringify(body)
             : undefined,
       });
-
       if (!response.ok) {
         return setReponseData(
           `API request failed with status ${response.status}`,
