@@ -49,7 +49,7 @@ export const RepoCards = () => {
   const title: string = "Details of this repository";
 
   return (
-    <div className="font-default flex flex-col pb-6">
+    <div className="font-default flex flex-col pb-10">
       <div className="mb-8 text-center ">
         <h1 className="mb-3 text-4xl font-extrabold text-neutral-900">
           Product exhibition space
@@ -65,7 +65,7 @@ export const RepoCards = () => {
         {repos.map((i) => (
           <div
             key={i.id}
-            className="relative flex h-52 cursor-pointer flex-col justify-between rounded-xl bg-slate-100 p-4 duration-300 hover:bg-slate-200"
+            className="relative flex h-52 cursor-pointer flex-col justify-between rounded-xl bg-neutral-100 p-4 duration-300 hover:bg-neutral-200"
             onClick={() => handleShowModal(i)}
           >
             <div className="flex items-center gap-5">
