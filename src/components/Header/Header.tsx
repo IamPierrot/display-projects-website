@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const Header = memo(() => {
   const [styleStickMenu, setStyleStickMenu] = useState("");
   const [styleLink, setStyleLink] = useState("");
-
+  
   const [active, setActive] = useState(() => {
     const storedActive = localStorage.getItem("activeTab");
     return storedActive || "HOME";

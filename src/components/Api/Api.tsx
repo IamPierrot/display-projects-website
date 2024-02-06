@@ -130,12 +130,12 @@ export const Api = () => {
                   updateHeader(index, header.key, e.target.value)
                 }
               />
-              <button
-                onClick={() => removeHeader(index)}
-                className="ml-2 px-2 py-1 text-gray-400 hover:text-gray-600"
-              >
-                -
-              </button>
+                <button
+                  onClick={() => removeHeader(index)}
+                  className="ml-2 px-2 py-1 text-gray-400 hover:text-gray-600"
+                >
+                  <span className={`${index != 0 ? "" : "invisible"}`}>-</span>
+                </button>
             </div>
           ))}
           <button
