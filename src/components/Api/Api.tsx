@@ -29,7 +29,6 @@ export const Api = () => {
   };
 
   const handleCallApi = async () => {
-    console.log(body);
     setIsLoading(true);
 
     if (!url) return setReponseData(`invalid url input`);

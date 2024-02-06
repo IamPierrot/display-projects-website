@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { WebsiteCards } from "./wesiteType";
+import { WebsiteCards } from "../..";
 
 const websiteOfFish: WebsiteCards[] = [
   {

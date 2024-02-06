@@ -1,12 +1,12 @@
-@import '@fortawesome/fontawesome-free/css/all.css';
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+@import "@fortawesome/fontawesome-free/css/all.css";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;500;600;700;800;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-     --primary-header-color: #324A56;
-     --primary-footer-color: rgb(157, 169, 185);
-     --primary-header1-color: #172647;
-     --primary-footer1-color: #748DB5;
+  --primary-header-color: #324a56;
+  --primary-footer-color: #9da9b9;
+  --primary-header1-color: #172647;
+  --primary-footer1-color: #748db5;
 }
