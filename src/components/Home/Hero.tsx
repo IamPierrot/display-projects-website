@@ -28,14 +28,14 @@ export const Hero = () => {
           </span>
         </div>
         <img
-          src="../../src/assets/image1.jpg"
+          src="/image1.jpg"
           alt="ảnh test"
           className="h-2/6 w-2/6 rounded-3xl transition-all duration-300 ease-in-out hover:rotate-12 hover:shadow-lg"
         />
       </div>
       <div className="flex justify-around pr-6 pt-6">
         <img
-          src="../../src/assets/image2.jpg"
+          src="/image2.jpg"
           alt="ảnh test"
           className="h-2/6 w-2/6 rounded-3xl transition-all duration-300 ease-in-out hover:-rotate-12 hover:shadow-lg"
         />

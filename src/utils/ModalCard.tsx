@@ -64,7 +64,7 @@ export const ModalCard: React.FC<Card> = ({
               <>
                 Ngôn ngữ chính:
                 <img
-                  src={`../../src/assets/${languageType[language]}.png`}
+                  src={`../../${languageType[language]}.png`}
                   alt="language's image"
                   className="h-[30px] w-[30px]"
                 />

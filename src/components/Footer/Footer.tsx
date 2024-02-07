@@ -35,7 +35,7 @@ export const Footer = () => {
       <div className="mx-auto grid max-w-screen-xl gap-x-4 gap-y-6 px-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         <h1 className=" text-slate-50">
           <div className="w-fit">
-            <h1 className="font-semibold">Yêu đương với vẫn</h1>
+            <h1 className="font-semibold">Yêu đương vớ vẩn</h1>
             <h1 className="w-fit font-semibold">Love is nonsense</h1>
             <ul className="mt-1 text-slate-300">
               <li>Quote: @kry</li>

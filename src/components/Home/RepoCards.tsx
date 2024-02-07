@@ -9,32 +9,36 @@ export const RepoCards = () => {
   const [repos, setRepos] = useState<RepoCardsProp[]>([]);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [selectedRepo, setSelectedRepo] = useState<RepoCardsProp | null>();
+  const [selectedAuthor, setSelectedAuthor] = useState<
+    keyof {
+      IamPierrot: Response[];
+      CaSapChim: Response[];
+      KitoMCVN: Response[];
+    }
+  >("IamPierrot");
+
   useEffect(() => {
     const repositories: RepoCardsProp[] = [];
     getAllRespo().then((rs) => {
-      for (const [author, repos] of Object.entries(rs)) {
-        for (const repo of repos) {
-          repo.map((_, index) => {
-            if (!repo[index].fork && !repo[index].private) {
-              repositories.push({
-                id: repo[index].id,
-                author: author,
-                avatarUrl: repo[index].owner.avatar_url,
-                repoTitle: repo[index].name,
-                desc: repo[index].description,
-                star: repo[index].stargazers_count,
-                fork: repo[index].forks_count,
-                repoUrl: repo[index].html_url,
-                language: repo[index].language,
-                create_at: repo[index].created_at,
-              });
-            }
+      rs[selectedAuthor][0].map((i) => {
+        if (!i.fork && !i.private) {
+          repositories.push({
+            id: i.id,
+            author: selectedAuthor,
+            avatarUrl: i.owner.avatar_url,
+            repoTitle: i.name,
+            desc: i.description,
+            star: i.stargazers_count,
+            fork: i.forks_count,
+            repoUrl: i.html_url,
+            language: i.language,
+            create_at: i.created_at,
           });
         }
-      }
+      });
       setRepos(repositories);
     });
-  }, []);
+  }, [selectedAuthor]);
 
   const handleShowModal = (repo: RepoCardsProp) => {
     setShowModal(!showModal);
@@ -50,7 +54,7 @@ export const RepoCards = () => {
 
   return (
     <div className="flex flex-col pb-10 font-default">
-      <div className="mb-8 text-center ">
+      <div className="relative mb-8 text-center">
         <h1 className="mb-3 text-4xl font-extrabold text-slate-50">
           Product exhibition space
         </h1>
@@ -60,12 +64,38 @@ export const RepoCards = () => {
           <span className="font-medium  text-cyan-500">IamPierrot</span> and{" "}
           <span className="font-medium  text-cyan-500">KitoMC</span> products.
         </p>
+        <div className="absolute mt-2 flex items-center rounded-lg border border-slate-300/10">
+          <button
+            className={`border-r border-slate-300/10 px-4 py-2 text-slate-50 ${
+              selectedAuthor === "IamPierrot" ? "rounded-l-lg bg-cyan-600" : ""
+            }`}
+            onClick={() => setSelectedAuthor("IamPierrot")}
+          >
+            Vẹt
+          </button>
+          <button
+            className={`py-2 pl-4 pr-5  text-slate-50 ${
+              selectedAuthor === "CaSapChim" ? "bg-cyan-600" : ""
+            }`}
+            onClick={() => setSelectedAuthor("CaSapChim")}
+          >
+            Cá
+          </button>
+          <button
+            className={`border-l  border-slate-300/10 py-2 pl-4 pr-5 text-slate-50 ${
+              selectedAuthor === "KitoMCVN" ? "rounded-r-lg bg-cyan-600" : ""
+            }`}
+            onClick={() => setSelectedAuthor("KitoMCVN")}
+          >
+            Kito
+          </button>
+        </div>
       </div>
-      <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-8 grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {repos.map((i) => (
           <div
             key={i.id}
-            className="relative flex h-52 cursor-pointer flex-col justify-between rounded-xl bg-slate-800 hover:bg-slate-700   p-4 duration-300 "
+            className="relative flex h-52 cursor-pointer flex-col justify-between rounded-xl bg-slate-800 p-4   duration-300 hover:bg-slate-700 "
             onClick={() => handleShowModal(i)}
           >
             <div className="flex items-center gap-5">
