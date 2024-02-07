@@ -9,32 +9,30 @@ export const RepoCards = () => {
   const [repos, setRepos] = useState<RepoCardsProp[]>([]);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [selectedRepo, setSelectedRepo] = useState<RepoCardsProp | null>();
+  const [selectedAuthor, setSelectedAuthor] = useState<keyof { IamPierrot: Response[]; CaSapChim: Response[]; }>("IamPierrot");
+
   useEffect(() => {
     const repositories: RepoCardsProp[] = [];
     getAllRespo().then((rs) => {
-      for (const [author, repos] of Object.entries(rs)) {
-        for (const repo of repos) {
-          repo.map((_, index) => {
-            if (!repo[index].fork && !repo[index].private) {
+          rs[selectedAuthor][0].map((i) => {
+            if (!i.fork && !i.private) {
               repositories.push({
-                id: repo[index].id,
-                author: author,
-                avatarUrl: repo[index].owner.avatar_url,
-                repoTitle: repo[index].name,
-                desc: repo[index].description,
-                star: repo[index].stargazers_count,
-                fork: repo[index].forks_count,
-                repoUrl: repo[index].html_url,
-                language: repo[index].language,
-                create_at: repo[index].created_at,
+                id: i.id,
+                author: selectedAuthor,
+                avatarUrl: i.owner.avatar_url,
+                repoTitle: i.name,
+                desc: i.description,
+                star: i.stargazers_count,
+                fork: i.forks_count,
+                repoUrl: i.html_url,
+                language: i.language,
+                create_at: i.created_at,
               });
             }
           });
-        }
-      }
       setRepos(repositories);
     });
-  }, []);
+  }, [selectedAuthor]);
 
   const handleShowModal = (repo: RepoCardsProp) => {
     setShowModal(!showModal);
@@ -50,7 +48,21 @@ export const RepoCards = () => {
 
   return (
     <div className="font-default flex flex-col pb-10">
-      <div className="mb-8 text-center ">
+      <div className="mb-8 text-center relative">
+        <div className="absolute flex items-center rounded-lg border font-mono">
+          <button
+            className={`px-4 py-2 border-r ${selectedAuthor === "IamPierrot" ? "bg-cyan-300 rounded-l-lg" : ""}`}
+            onClick={() => setSelectedAuthor("IamPierrot")}
+          >
+            Vẹt
+          </button>
+          <button
+            className={`pl-4 pr-5 py-2 ${selectedAuthor === "CaSapChim" ? "bg-cyan-300 rounded-r-lg" : ""}`}
+            onClick={() => setSelectedAuthor("CaSapChim")}
+          >
+            Cá
+          </button>
+        </div>
         <h1 className="mb-3 text-4xl font-extrabold text-neutral-900">
           Product exhibition space
         </h1>
