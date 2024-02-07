@@ -15,7 +15,7 @@ export const Header = memo(() => {
 
   const [active, setActive] = useState(() => {
     const storedActive = localStorage.getItem("activeTab");
-    return storedActive || "HOME";
+    return storedActive ?? "HOME";
   });
 
   useEffect(() => {
@@ -58,8 +58,7 @@ export const Header = memo(() => {
 
   return (
     <nav
-
-      className={`font-default top-0 flex h-[60px] w-full items-center text-base font-semibold text-slate-50 ${styleStickMenu}`}
+      className={`top-0 flex h-[60px] w-full items-center font-default text-base font-semibold text-slate-50 ${styleStickMenu}`}
     >
       <div className="mx-auto flex w-full max-w-screen-xl flex-row items-center justify-between px-3">
         <div className=" cursor-pointer">
@@ -77,7 +76,9 @@ export const Header = memo(() => {
               <li
                 key={key}
                 className={`transition duration-200 hover:text-cyan-600 ${
-                  active === i.name ? "text-cyan-600" : "text-slate-50 "
+                  active.toLowerCase() === i.name.toLowerCase()
+                    ? "text-cyan-600"
+                    : "text-slate-50 "
                 } ${styleLink}`}
                 onClick={() => setActive(i.name)}
               >
