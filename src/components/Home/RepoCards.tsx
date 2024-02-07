@@ -9,7 +9,7 @@ export const RepoCards = () => {
   const [repos, setRepos] = useState<RepoCardsProp[]>([]);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [selectedRepo, setSelectedRepo] = useState<RepoCardsProp | null>();
-  const [selectedAuthor, setSelectedAuthor] = useState<keyof { IamPierrot: Response[]; CaSapChim: Response[]; }>("IamPierrot");
+  const [selectedAuthor, setSelectedAuthor] = useState<keyof { IamPierrot: Response[]; CaSapChim: Response[]; KitoMCVN: Response[]}>("IamPierrot");
 
   useEffect(() => {
     const repositories: RepoCardsProp[] = [];
@@ -49,7 +49,7 @@ export const RepoCards = () => {
   return (
     <div className="font-default flex flex-col pb-10">
       <div className="mb-8 text-center relative">
-        <div className="absolute flex items-center rounded-lg border font-mono">
+        <div className="absolute flex items-center rounded-lg border text-black">
           <button
             className={`px-4 py-2 border-r ${selectedAuthor === "IamPierrot" ? "bg-cyan-300 rounded-l-lg" : ""}`}
             onClick={() => setSelectedAuthor("IamPierrot")}
@@ -57,19 +57,26 @@ export const RepoCards = () => {
             Vẹt
           </button>
           <button
-            className={`pl-4 pr-5 py-2 ${selectedAuthor === "CaSapChim" ? "bg-cyan-300 rounded-r-lg" : ""}`}
+            className={`pl-4 pr-5 py-2 ${selectedAuthor === "CaSapChim" ? "bg-cyan-300" : ""}`}
             onClick={() => setSelectedAuthor("CaSapChim")}
           >
             Cá
           </button>
+          <button
+            className={`pl-4 pr-5 py-2 ${selectedAuthor === "KitoMCVN" ? "bg-cyan-300 rounded-r-lg" : ""}`}
+            onClick={() => setSelectedAuthor("KitoMCVN")}
+          >
+            Kito
+          </button>
         </div>
-        <h1 className="mb-3 text-4xl font-extrabold text-neutral-900">
+        <h1 className="mb-3 text-4xl font-extrabold text-slate-50">
           Product exhibition space
         </h1>
         <p className="text-lg font-normal text-slate-300">
           This is the showcase of{" "}
-          <span className="font-medium text-cyan-500">CaSapChim</span> and{" "}
-          <span className="font-medium  text-cyan-500">IamPierrot</span>{" "}
+          <span className="font-medium text-cyan-500">CaSapChim</span>{", "}
+          <span className="font-medium  text-cyan-500">IamPierrot</span>{" "}and{" "}
+          <span className="font-medium  text-cyan-500">Kito</span>{" "}
           products.
         </p>
       </div>

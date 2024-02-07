@@ -31,11 +31,11 @@ import { faDiscord, faFacebook } from "@fortawesome/free-brands-svg-icons";
 
 export const Footer = () => {
   return (
-    <footer className="border-t border-slate-900/10 py-10 font-default">
-      <div className="mx-auto flex max-w-screen-xl justify-between px-3">
-        <h1 className=" text-neutral-900">
+    <footer className="border-t border-slate-300/10 py-10">
+      <div className="mx-auto grid max-w-screen-xl gap-x-4 gap-y-6 px-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <h1 className=" text-slate-50">
           <div className="w-fit">
-            <h1 className="font-semibold">Yêu đương với vẫn</h1>
+            <h1 className="font-semibold">Yêu đương vớ vẩn</h1>
             <h1 className="w-fit font-semibold">Love is nonsense</h1>
             <ul className="mt-1 text-slate-300">
               <li>Quote: @kry</li>

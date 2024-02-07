@@ -40,8 +40,8 @@ export const ModalCard: React.FC<Card> = ({
   if (!visible) return;
 
   return (
-    <div className="fixed inset-0 top-0 flex items-center justify-center bg-black bg-opacity-30">
-      <div className="relative h-1/2 w-2/5 animate-popupModal rounded-xl bg-white p-3">
+    <div className="*: fixed inset-0 top-0 flex items-center justify-center bg-black bg-opacity-30">
+      <div className="relative h-1/2 w-2/5 animate-popupModal rounded-xl bg-slate-800 p-3 text-slate-50">
         <header className="flex h-[3vh] w-full items-center justify-between">
           <h1 className="text-xl font-bold">{title}</h1>
           <h3 className="cursor-pointer text-2xl font-bold" onClick={close}>
@@ -57,12 +57,12 @@ export const ModalCard: React.FC<Card> = ({
           </div>
         )}
         <div className="mt-3">
-          <span className="flex items-center gap-2">
+          <span className="flex items-center gap-2 text-slate-300">
             {language?.length && (
               <>
                 Ngôn ngữ chính:
                 <img
-                  src={`../../src/assets/${languageType[language]}.png`}
+                  src={`../../${languageType[language]}.png`}
                   alt="language's image"
                   className="h-[30px] w-[30px]"
                 />

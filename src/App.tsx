@@ -10,7 +10,7 @@ library.add(fas);
 
 function App() {
   return (
-    <div className="relative flex min-h-screen w-full flex-col  bg-white">
+    <div className="relative flex min-h-screen w-full flex-col bg-slate-900 text-slate-50">
       <Router>
         <EventScroll />
         <Header />

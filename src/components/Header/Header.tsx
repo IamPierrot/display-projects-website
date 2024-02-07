@@ -7,6 +7,7 @@ import {
   faCode,
   faMugHot,
 } from "@fortawesome/free-solid-svg-icons";
+
 export const Header = memo(() => {
   const [styleStickMenu, setStyleStickMenu] = useState("");
   const [styleLink, setStyleLink] = useState("");
@@ -38,9 +39,9 @@ export const Header = memo(() => {
         document.documentElement.scrollTop >= 200
       ) {
         setStyleStickMenu(
-          "sticky z-50 bg-slate-800 border-b border-slate-300/10 transition-all ease-in-out duration-500",
+          "sticky z-50 bg-slate-800 border-b border-slate-300/10 duration-500",
         );
-        setStyleLink("transition-all ease-in-out duration-500");
+        setStyleLink(" duration-500");
       } else {
         setStyleStickMenu("");
         setStyleLink("");
@@ -53,15 +54,16 @@ export const Header = memo(() => {
       window.removeEventListener("scroll", handleStickMenu);
     };
   }, []);
+
   return (
     <nav
-      className={`top-0 flex h-[60px] w-full items-center font-default text-base font-semibold text-neutral-900 ${styleStickMenu}`}
+      className={`font-default top-0 flex h-[60px] w-full items-center text-base font-semibold text-slate-50 ${styleStickMenu}`}
     >
       <div className="mx-auto flex w-full max-w-screen-xl flex-row items-center justify-between px-3">
         <div className=" cursor-pointer">
           <Link to="/" onClick={() => setActive("HOME")}>
             <img
-              src="/logo.jpg"
+              src="../../logo.jpg"
               alt="logo image"
               className="h-10 w-full rounded-[50%]"
             />
