@@ -7,11 +7,10 @@ import {
   faCode,
   faMugHot,
 } from "@fortawesome/free-solid-svg-icons";
-
 export const Header = memo(() => {
   const [styleStickMenu, setStyleStickMenu] = useState("");
   const [styleLink, setStyleLink] = useState("");
-  
+
   const [active, setActive] = useState(() => {
     const storedActive = localStorage.getItem("activeTab");
     return storedActive || "HOME";
@@ -39,7 +38,7 @@ export const Header = memo(() => {
         document.documentElement.scrollTop >= 200
       ) {
         setStyleStickMenu(
-          "sticky z-50 bg-white border-b border-slate-900/10 transition-all ease-in-out duration-500",
+          "sticky z-50 bg-slate-800 border-b border-slate-300/10 transition-all ease-in-out duration-500",
         );
         setStyleLink("transition-all ease-in-out duration-500");
       } else {
@@ -54,16 +53,15 @@ export const Header = memo(() => {
       window.removeEventListener("scroll", handleStickMenu);
     };
   }, []);
-
   return (
     <nav
-      className={`font-default top-0 flex h-[60px] w-full items-center text-base font-semibold text-neutral-900 ${styleStickMenu}`}
+      className={`top-0 flex h-[60px] w-full items-center font-default text-base font-semibold text-neutral-900 ${styleStickMenu}`}
     >
       <div className="mx-auto flex w-full max-w-screen-xl flex-row items-center justify-between px-3">
         <div className=" cursor-pointer">
           <Link to="/" onClick={() => setActive("HOME")}>
             <img
-              src="../../src/assets/logo.jpg"
+              src="/logo.jpg"
               alt="logo image"
               className="h-10 w-full rounded-[50%]"
             />
@@ -75,7 +73,7 @@ export const Header = memo(() => {
               <li
                 key={key}
                 className={`transition duration-200 hover:text-cyan-600 ${
-                  active === i.name ? "text-cyan-600" : "text-neutral-900"
+                  active === i.name ? "text-cyan-600" : "text-slate-50 "
                 } ${styleLink}`}
                 onClick={() => setActive(i.name)}
               >

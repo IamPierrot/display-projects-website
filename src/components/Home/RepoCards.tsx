@@ -66,7 +66,7 @@ export const RepoCards = () => {
         <h1 className="mb-3 text-4xl font-extrabold text-neutral-900">
           Product exhibition space
         </h1>
-        <p className="text-lg font-normal text-neutral-600">
+        <p className="text-lg font-normal text-slate-300">
           This is the showcase of{" "}
           <span className="font-medium text-cyan-500">CaSapChim</span> and{" "}
           <span className="font-medium  text-cyan-500">IamPierrot</span>{" "}
@@ -77,7 +77,7 @@ export const RepoCards = () => {
         {repos.map((i) => (
           <div
             key={i.id}
-            className="relative flex h-52 cursor-pointer flex-col justify-between rounded-xl bg-neutral-100 p-4 duration-300 hover:bg-neutral-200"
+            className="relative flex h-52 cursor-pointer flex-col justify-between rounded-xl bg-slate-800 p-4 duration-300 "
             onClick={() => handleShowModal(i)}
           >
             <div className="flex items-center gap-5">
@@ -88,15 +88,15 @@ export const RepoCards = () => {
               />
               <div className="">
                 <h1 className=" test-base font-bold">{i.author}</h1>
-                <p>{i.repoTitle}</p>
+                <p className="text-slate-300">{i.repoTitle}</p>
               </div>
             </div>
             <div className="mt-auto flex w-full justify-between">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 text-slate-300">
                 <FontAwesomeIcon icon={faStar} />
                 {i.star}
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 text-slate-300">
                 <FontAwesomeIcon icon={faCodeFork} />
                 {i.fork}
               </div>
