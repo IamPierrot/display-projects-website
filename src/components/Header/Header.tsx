@@ -38,7 +38,7 @@ export const Header = memo(() => {
         document.documentElement.scrollTop >= 200
       ) {
         setStyleStickMenu(
-          "sticky z-50 bg-white border-b border-slate-900/10 transition-all ease-in-out duration-500",
+          "sticky z-50 bg-slate-800 border-b border-slate-300/10 transition-all ease-in-out duration-500",
         );
         setStyleLink("transition-all ease-in-out duration-500");
       } else {
@@ -73,7 +73,7 @@ export const Header = memo(() => {
               <li
                 key={key}
                 className={`transition duration-200 hover:text-cyan-600 ${
-                  active === i.name ? "text-cyan-600" : "text-neutral-900"
+                  active === i.name ? "text-cyan-600" : "text-slate-50 "
                 } ${styleLink}`}
                 onClick={() => setActive(i.name)}
               >

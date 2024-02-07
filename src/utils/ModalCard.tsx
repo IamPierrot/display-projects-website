@@ -62,13 +62,18 @@ export const ModalCard: React.FC<Card> = ({
               <>
                 Ngôn ngữ chính:
                 <img
-                  src={`/${languageType[language]}.png`}
+                  src={`../../src/assets/${languageType[language]}.png`}
                   alt="language's image"
                   className="h-[30px] w-[30px]"
                 />
               </>
             )}
           </span>
+        </div>
+        <div className="flex h-1/2 w-full items-center justify-center">
+          <button className="rounded-lg border-none bg-blue-400 p-2">
+            View Source
+          </button>
         </div>
         <h2 className="absolute bottom-2">{formatDate(create_at!)}</h2>
       </div>

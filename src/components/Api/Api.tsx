@@ -104,12 +104,12 @@ export const Api = () => {
   };
 
   return (
-    <div className="mx-4 flex-grow p-4 pt-12 font-mono">
-      <div className="mb-4 flex border-collapse items-center rounded-3xl border border-none bg-gray-600">
+    <div className="flex-grow p-4 pt-12 font-mono">
+      <div className="mb-4 flex border-collapse items-center">
         <select
           value={method}
           onChange={(e) => setMethod(e.target.value)}
-          className={`relative flex cursor-pointer rounded-s-3xl border-r bg-slate-700 px-14 py-2 font-bold transition-all duration-300 hover:bg-opacity-100 ${
+          className={`block  w-28 rounded-s-lg border-2 border-gray-300 border-s-gray-100 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 ${
             methodColors[method as keyof object]
           }`}
         >
@@ -126,7 +126,6 @@ export const Api = () => {
             DELETE
           </option>
         </select>
-
         <input
           value={url}
           onChange={(e) => setUrl(e.target.value)}
@@ -134,9 +133,10 @@ export const Api = () => {
           placeholder="API URL"
           className="!important flex-grow rounded-r border-none bg-gray-600 py-2 text-slate-200 placeholder-white focus:outline-0 focus:ring-0"
         />
+
         <button
           onClick={handleCallApi}
-          className="rounded-e-3xl border-l px-14 py-2 text-white transition-all duration-300 hover:bg-blue-400"
+          className="mb-2 me-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           SEND
         </button>
@@ -167,11 +167,9 @@ export const Api = () => {
               />
               <button
                 onClick={() => removeHeader(index)}
-                className={`ml-2 px-2 py-1 text-gray-400 hover:text-gray-600 ${
-                  index == 0 ? "invisible" : ""
-                }`}
+                className="ml-2 px-2 py-1 text-gray-400 hover:text-gray-600"
               >
-                -
+                <span className={`${index != 0 ? "" : "invisible"}`}>-</span>
               </button>
             </div>
           ))}
