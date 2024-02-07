@@ -31,13 +31,13 @@ import { faDiscord, faFacebook } from "@fortawesome/free-brands-svg-icons";
 
 export const Footer = () => {
   return (
-    <footer className="border-t border-slate-900/10 py-10">
-      <div className="mx-auto flex max-w-screen-xl justify-between px-3">
-        <h1 className=" text-neutral-900">
+    <footer className="border-t border-slate-300/10 py-10">
+      <div className="mx-auto grid max-w-screen-xl gap-x-4 gap-y-6 px-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <h1 className=" text-slate-50">
           <div className="w-fit">
             <h1 className="font-semibold">Yêu đương với vẫn</h1>
             <h1 className="w-fit font-semibold">Love is nonsense</h1>
-            <ul className="mt-1">
+            <ul className="mt-1 text-slate-300">
               <li>Quote: @kry</li>
               <li>Design: @kry & @KitoMC</li>
             </ul>
@@ -45,8 +45,8 @@ export const Footer = () => {
         </h1>
 
         <div>
-          <label className="font-semibold text-neutral-900">Links</label>
-          <ul className="mt-1">
+          <label className="font-semibold text-slate-50">Links</label>
+          <ul className="mt-1 text-slate-300">
             <li>
               <a
                 href="https://www.facebook.com/groups/neyugang"
@@ -70,8 +70,8 @@ export const Footer = () => {
         </div>
 
         <div>
-          <label className="font-semibold text-neutral-900">Contact</label>
-          <ul className="mt-1">
+          <label className="font-semibold text-slate-50">Contact</label>
+          <ul className="mt-1 text-slate-300">
             <li className="">
               <span className=" flex items-center gap-1">
                 <FontAwesomeIcon icon={faEnvelope} />
@@ -85,14 +85,14 @@ export const Footer = () => {
               </span>
             </li>
             <li className="">
-              <button className="hover:bg-slate-2000 mt-2 rounded-3xl bg-slate-100 px-4 py-2 text-base hover:bg-slate-200">
+              <button className=" mt-2 rounded-3xl bg-slate-800 px-4 py-2 text-base transition hover:bg-slate-600">
                 Send Now <FontAwesomeIcon icon={faArrowRight} />
               </button>
             </li>
           </ul>
         </div>
 
-        <div className="w-fit items-center justify-center font-semibold text-neutral-900">
+        <div className="w-fit items-center justify-center font-semibold text-slate-50">
           <label>Languages & Tools</label>
           <div className="mt-2">
             <div className="h-fit text-2xl">
