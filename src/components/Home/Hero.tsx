@@ -2,9 +2,9 @@ import { TypeAnimation } from "react-type-animation";
 
 export const Hero = () => {
   return (
-    <div className="h-full w-full p-20">
+    <div className="my-20">
       <div className="">
-        <h1 className="mx-auto py-6 font-mono text-4xl font-extrabold text-slate-50">
+        <h1 className="mx-auto py-6 font-default text-4xl font-extrabold text-slate-50">
           <TypeAnimation
             sequence={[
               "Hello!",

@@ -49,23 +49,23 @@ export const RepoCards = () => {
   const title: string = "Details of this repository";
 
   return (
-    <div className="font-default flex flex-col pb-10">
+    <div className="flex flex-col pb-10 font-default">
       <div className="mb-8 text-center ">
         <h1 className="mb-3 text-4xl font-extrabold text-slate-50">
           Product exhibition space
         </h1>
         <p className="text-lg font-normal text-slate-300">
           This is the showcase of{" "}
-          <span className="font-medium text-cyan-500">CaSapChim</span> and{" "}
-          <span className="font-medium  text-cyan-500">IamPierrot</span>{" "}
-          products.
+          <span className="font-medium text-cyan-500">CaSapChim</span>,{" "}
+          <span className="font-medium  text-cyan-500">IamPierrot</span> and{" "}
+          <span className="font-medium  text-cyan-500">KitoMC</span> products.
         </p>
       </div>
       <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {repos.map((i) => (
           <div
             key={i.id}
-            className="relative flex h-52 cursor-pointer flex-col justify-between rounded-xl bg-slate-800 p-4 duration-300 "
+            className="relative flex h-52 cursor-pointer flex-col justify-between rounded-xl bg-slate-800 hover:bg-slate-700   p-4 duration-300 "
             onClick={() => handleShowModal(i)}
           >
             <div className="flex items-center gap-5">

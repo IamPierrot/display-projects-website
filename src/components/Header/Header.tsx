@@ -6,12 +6,13 @@ import {
   faPager,
   faCode,
   faMugHot,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 
 export const Header = memo(() => {
   const [styleStickMenu, setStyleStickMenu] = useState("");
   const [styleLink, setStyleLink] = useState("");
-  
+
   const [active, setActive] = useState(() => {
     const storedActive = localStorage.getItem("activeTab");
     return storedActive || "HOME";
@@ -39,9 +40,9 @@ export const Header = memo(() => {
         document.documentElement.scrollTop >= 200
       ) {
         setStyleStickMenu(
-          "sticky z-50 bg-slate-800 border-b border-slate-300/10 transition-all ease-in-out duration-500",
+          "sticky z-50 bg-slate-800 border-b border-slate-300/10",
         );
-        setStyleLink("transition-all ease-in-out duration-500");
+        setStyleLink(" duration-500");
       } else {
         setStyleStickMenu("");
         setStyleLink("");
@@ -57,11 +58,7 @@ export const Header = memo(() => {
 
   return (
     <nav
-<<<<<<< HEAD
-      className={`top-0 flex h-[60px] w-full items-center text-base font-semibold text-slate-50 ${styleStickMenu}`}
-=======
-      className={`font-default top-0 flex h-[60px] w-full items-center text-base font-semibold text-neutral-900 ${styleStickMenu}`}
->>>>>>> 8bbf725164cf25a50fdd12d687aa4d39f66bf8ca
+      className={`top-0 flex h-[60px] w-full items-center font-default text-base font-semibold text-slate-50 ${styleStickMenu}`}
     >
       <div className="mx-auto flex w-full max-w-screen-xl flex-row items-center justify-between px-3">
         <div className=" cursor-pointer">
@@ -73,7 +70,7 @@ export const Header = memo(() => {
             />
           </Link>
         </div>
-        <div className="cursor-pointer">
+        <div className="hidden cursor-pointer md:block">
           <ul className="flex items-center justify-between gap-10">
             {items.map((i, key) => (
               <li
@@ -92,6 +89,9 @@ export const Header = memo(() => {
               </li>
             ))}
           </ul>
+        </div>
+        <div className="cursor-pointer text-xl">
+          <FontAwesomeIcon icon={faBars} />
         </div>
       </div>
     </nav>
