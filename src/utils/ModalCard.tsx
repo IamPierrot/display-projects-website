@@ -64,6 +64,11 @@ export const ModalCard: React.FC<Card> = ({visible, close, title, desc, language
                         }
                     </span>
                 </div>
+                <div className="w-full h-1/2 flex justify-center items-center">
+                    <button className="border-none bg-blue-400 p-2 rounded-lg">
+                        View Source
+                    </button>
+                </div>
                 <h2 className="absolute bottom-2">{formatDate(create_at!)}</h2>
             </div>
         </div>

@@ -11,7 +11,7 @@ import {
 export const Header = memo(() => {
   const [styleStickMenu, setStyleStickMenu] = useState("");
   const [styleLink, setStyleLink] = useState("");
-
+  
   const [active, setActive] = useState(() => {
     const storedActive = localStorage.getItem("activeTab");
     return storedActive || "HOME";
@@ -57,7 +57,11 @@ export const Header = memo(() => {
 
   return (
     <nav
+<<<<<<< HEAD
       className={`top-0 flex h-[60px] w-full items-center text-base font-semibold text-slate-50 ${styleStickMenu}`}
+=======
+      className={`font-default top-0 flex h-[60px] w-full items-center text-base font-semibold text-neutral-900 ${styleStickMenu}`}
+>>>>>>> 8bbf725164cf25a50fdd12d687aa4d39f66bf8ca
     >
       <div className="mx-auto flex w-full max-w-screen-xl flex-row items-center justify-between px-3">
         <div className=" cursor-pointer">

@@ -19,6 +19,12 @@ export const Team = () => {
       desc: "Hello",
       fbLink: "",
     },
+    {
+      name: "Kito",
+      avatarUrl: "https://avatars.githubusercontent.com/u/95675413?v=4",
+      desc: "Hello",
+      fbLink: "",
+    },
   ];
   return (
     <div>

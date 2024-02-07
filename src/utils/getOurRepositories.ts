@@ -1,5 +1,5 @@
 import { Octokit } from "octokit";
-import { Response } from "../components/Page/wesiteType";
+import { Response } from "..";
 
 const apiKey = import.meta.env.TOKEN;
 
