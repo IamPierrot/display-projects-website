@@ -97,6 +97,11 @@ export const Api = () => {
           type="text"
           placeholder="API URL"
           className="!important flex-grow rounded-r border-none bg-gray-600 py-2 text-slate-200 placeholder-white focus:outline-0 focus:ring-0"
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleCallApi();
+            }
+          }}
         />
         <button
           onClick={handleCallApi}
@@ -131,7 +136,7 @@ export const Api = () => {
               />
                 <button
                   onClick={() => removeHeader(index)}
-                  className="ml-2 px-2 py-1 text-gray-400 hover:text-gray-600"
+                  className={`ml-2 px-2 py-1 text-gray-400 hover:text-gray-600 ${index != 0 ? "" : "cursor-default"}`}
                 >
                   <span className={`${index != 0 ? "" : "invisible"}`}>-</span>
                 </button>
