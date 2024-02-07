@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Content } from "./Content";
 import { BodyEditor } from "./BodyEditor";
+import axios from "axios";
 const methodColors = {
   GET: "text-green-500",
   POST: "text-yellow-400",
@@ -14,6 +15,11 @@ export const Api = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [method, setMethod] = useState("GET");
   const [body, setBody] = useState("");
+  const [responseStatus, setResponseStatus] = useState<
+    number | null | undefined
+  >(null);
+  const [responseTiming, setResponseTiming] = useState(0);
+
   isLoading;
 
   const updateHeader = (index: number, key: string, value: string) => {
@@ -31,6 +37,9 @@ export const Api = () => {
 
   const handleCallApi = async () => {
     setIsLoading(true);
+
+    const startTime = performance.now();
+
     const validateAndNormalizeUrl = (url: string): string | null => {
       if (!url) {
         return null; // Handle empty URLs
@@ -64,25 +73,20 @@ export const Api = () => {
     console.log(normalizedUrl);
     if (!normalizedUrl) throw setReponseData("Invalid Url Input!");
     try {
-      const response = await fetch(normalizedUrl, {
+      const response = await axios(normalizedUrl, {
         method: method, // Adjust method as needed
-        headers: headers.reduce(
-          (obj, header) => Object.assign(obj, { [header.key]: header.value }),
-          {},
-        ),
-        body:
+        headers: {
+          "Content-Type": "apllication/json",
+        },
+        data:
           method === "POST" || method === "PUT"
             ? JSON.stringify(body)
             : undefined,
       });
-      if (!response.ok) {
-        return setReponseData(
-          `API request failed with status ${response.status}`,
-        );
-      }
 
-      const responseJson = await response.json();
+      const responseJson = await response.data;
       setReponseData(responseJson);
+      setResponseStatus(response.status);
     } catch (error: Error | unknown) {
       if (error instanceof Error) {
         console.error("API error:", error);
@@ -93,10 +97,14 @@ export const Api = () => {
     } finally {
       setIsLoading(false);
     }
+
+    const endTime = performance.now();
+
+    setResponseTiming(endTime - startTime);
   };
 
   return (
-    <div className="flex-grow p-4 pt-12 font-mono">
+    <div className="mx-4 flex-grow p-4 pt-12 font-mono">
       <div className="mb-4 flex border-collapse items-center rounded-3xl border border-none bg-gray-600">
         <select
           value={method}
@@ -159,7 +167,9 @@ export const Api = () => {
               />
               <button
                 onClick={() => removeHeader(index)}
-                className="ml-2 px-2 py-1 text-gray-400 hover:text-gray-600"
+                className={`ml-2 px-2 py-1 text-gray-400 hover:text-gray-600 ${
+                  index == 0 ? "invisible" : ""
+                }`}
               >
                 -
               </button>
@@ -167,7 +177,7 @@ export const Api = () => {
           ))}
           <button
             onClick={addHeader}
-            className="ml-2 px-2 py-1 text-gray-400 hover:text-gray-600"
+            className="ml-2 rounded-lg border-2 border-black px-2 py-1 text-stone-500 transition-colors duration-200 hover:bg-orange-400 hover:text-gray-600"
           >
             Add Header
           </button>
@@ -180,12 +190,16 @@ export const Api = () => {
       </div>
       <div className="">
         <h3 className="mb-2 text-lg font-bold text-white">Result</h3>
-        <Content data={responseData}></Content>
+        <Content
+          data={responseData}
+          status={responseStatus}
+          time={responseTiming}
+        ></Content>
       </div>
       <div className="mt-4 flex justify-between">
         <button
           onClick={() => setReponseData({})}
-          className="rounded border border-gray-300 px-4 py-2 text-white duration-300 hover:bg-blue-500"
+          className="rounded border border-gray-300 px-4 py-2 text-black duration-300 hover:bg-blue-500"
         >
           Clear
         </button>
