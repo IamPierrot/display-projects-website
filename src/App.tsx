@@ -6,6 +6,7 @@ import { EventScroll } from "./utils/eventScroll";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
+import { UtilityBar } from "./utils/utilitiesBar";
 
 library.add(fas);
 
@@ -27,6 +28,7 @@ function App() {
         <EventScroll />
         <Header />
         <Navigation />
+        <UtilityBar />
         <Footer />
       </Router>
     </div>

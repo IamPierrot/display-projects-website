@@ -100,7 +100,7 @@ export const Page = () => {
     );
   }, []);
   return (
-    <div className="pb-20 pl-20 pr-20 pt-10 font-mono">
+    <div className="mx-20 pb-20 pl-20 pr-20 pt-10 font-mono">
       <div id="sliderRoot" className="relative flex h-60 w-full bg-no-repeat">
         <button
           onClick={moveSlideRight}

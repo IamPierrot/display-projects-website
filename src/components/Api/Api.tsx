@@ -104,7 +104,7 @@ export const Api = () => {
   };
 
   return (
-    <div className="flex-grow p-4 pt-12 font-mono">
+    <div className="mx-24 flex-grow p-4 pt-12 font-mono">
       <div className="mb-4 flex border-collapse items-center rounded-3xl border border-none bg-gray-600">
         <select
           value={method}
