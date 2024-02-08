@@ -20,7 +20,6 @@ export const Header = memo(() => {
 
   useEffect(() => {
     localStorage.setItem("activeTab", active);
-
     return () => {
       localStorage.removeItem("activeTab");
     };
