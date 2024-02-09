@@ -5,10 +5,10 @@ export const UtilityBar = memo(() => {
   return (
     <aside
       className={`fixed top-1/2 flex h-1/2 w-fit transform ${
-        toggleBar ? "translate-x-0" : "-translate-x-3/4"
-      }  items-center justify-center rounded-e-full p-0 align-middle text-gray-900 transition-transform duration-300 ease-in-out`}
+        toggleBar ? "translate-x-0" : "-translate-x-[80%]"
+      }  items-center justify-center rounded-e-full p-0 align-middle text-slate-50 transition-transform duration-300 ease-in-out`}
     >
-      <div className="flex h-full w-20 flex-col items-center rounded-e-full border-r border-gray-200 bg-white">
+      <div className="flex w-14 flex-col items-center rounded-e-xl border-r border-slate-600 bg-slate-700">
         {/* <div className="flex h-[4.5rem] w-full items-center justify-center border-b border-gray-200 p-2">
           <img src="/logo.jpg" className="absolute rounded-3xl" alt="Avatar" />
         </div> */}
@@ -16,18 +16,18 @@ export const UtilityBar = memo(() => {
           onClick={() => {
             setToggleBar(!toggleBar);
           }}
-          className="absolute -right-4 top-1/2 h-11 w-11 rounded-full bg-slate-50"
+          className="absolute -right-5  top-1/2 h-11 w-11 -translate-y-[55%] rounded-full bg-slate-600"
         >
           <i
             className={`fa fa-chevron-right ${
               toggleBar ? "rotate-180" : "rotate-0"
-            } text-2xl font-bold text-gray-500 transition-all duration-300 ease-linear`}
+            } textxl font-bold text-slate-50 transition-all duration-300 ease-linear`}
           ></i>
         </button>
-        <nav className="flex max-h-full flex-1 flex-col gap-y-4 pt-10">
+        <nav className="flex max-h-full flex-col gap-y-4 pt-4">
           <a
             href="#"
-            className="group relative rounded-xl bg-gray-100 p-2 text-blue-600 hover:bg-gray-50"
+            className="group relative rounded-xl p-2 text-cyan-600 hover:bg-slate-600"
           >
             <svg
               className="h-6 w-6 stroke-current"
@@ -61,12 +61,12 @@ export const UtilityBar = memo(() => {
           </a>
           <a
             href="#"
-            className="text-gary-400 group relative rounded-xl p-2 hover:bg-gray-50"
+            className="text-gary-400 group relative rounded-xl p-2 hover:bg-slate-600"
           >
             <svg
               width="24"
               height="24"
-              className="h-6 w-6 stroke-current group-hover:text-blue-600"
+              className="h-6 w-6 stroke-current group-hover:text-cyan-600"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -111,8 +111,8 @@ export const UtilityBar = memo(() => {
           </a>
         </nav>
 
-        <div className="flex flex-col items-center gap-y-4 py-10">
-          <button className="group relative rounded-xl p-2 text-gray-400 hover:bg-gray-100">
+        <div className="flex flex-col items-center gap-y-4 pb-4 pt-12">
+          <button className="group relative rounded-xl p-2 text-slate-50 hover:bg-slate-600">
             <svg
               width="24"
               height="24"
