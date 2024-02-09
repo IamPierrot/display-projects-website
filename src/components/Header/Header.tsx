@@ -92,7 +92,7 @@ export const Header = memo(() => {
             ))}
           </ul>
         </div>
-        <div className="cursor-pointer text-xl">
+        <div className="cursor-pointer text-xl sm:hidden">
           <FontAwesomeIcon icon={faBars} />
         </div>
       </div>
