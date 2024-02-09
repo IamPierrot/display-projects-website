@@ -5,17 +5,14 @@ import { RepoCardsProp } from "../..";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCodeFork, faStar } from "@fortawesome/free-solid-svg-icons";
 
+type Author = keyof { IamPierrot: Response[]; CaSapChim: Response[]; KitoMCVN: Response[]; }
+
 export const RepoCards = () => {
   const [repos, setRepos] = useState<RepoCardsProp[]>([]);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [selectedRepo, setSelectedRepo] = useState<RepoCardsProp | null>();
-  const [selectedAuthor, setSelectedAuthor] = useState<
-    keyof {
-      IamPierrot: Response[];
-      CaSapChim: Response[];
-      KitoMCVN: Response[];
-    }
-  >("IamPierrot");
+  const [selectedAuthor, setSelectedAuthor] = useState<Author>("IamPierrot");
+  const [toLoadMore, setToLoadMore] = useState<number>(3);
 
   useEffect(() => {
     const repositories: RepoCardsProp[] = [];
@@ -50,6 +47,15 @@ export const RepoCards = () => {
     setSelectedRepo(null);
   };
 
+  const handleAuthorChange = (author: Author) => {
+    setSelectedAuthor(author);
+    setToLoadMore(3);
+  }
+
+  const handleLoadMore = (num: number) => {
+    setToLoadMore(toLoadMore + num);
+  }
+
   const title: string = "Details of this repository";
 
   return (
@@ -60,39 +66,30 @@ export const RepoCards = () => {
         </h1>
         <p className="text-lg font-normal text-slate-300">
           This is the showcase of{" "}
-          <span className="font-medium text-cyan-500">CaSapChim</span>,{" "}
-          <span className="font-medium  text-cyan-500">IamPierrot</span> and{" "}
-          <span className="font-medium  text-cyan-500">KitoMC</span> products.
+          <span className="font-medium text-cyan-500">{selectedAuthor}</span> products.
         </p>
-        <div className="absolute mt-2 flex items-center rounded-lg border border-slate-300/10">
-          <button
-            className={`border-r border-slate-300/10 px-4 py-2 text-slate-50 ${
-              selectedAuthor === "IamPierrot" ? "rounded-l-lg bg-cyan-600" : ""
-            }`}
-            onClick={() => setSelectedAuthor("IamPierrot")}
-          >
-            Vẹt
-          </button>
-          <button
-            className={`py-2 pl-4 pr-5  text-slate-50 ${
-              selectedAuthor === "CaSapChim" ? "bg-cyan-600" : ""
-            }`}
-            onClick={() => setSelectedAuthor("CaSapChim")}
-          >
-            Cá
-          </button>
-          <button
-            className={`border-l  border-slate-300/10 py-2 pl-4 pr-5 text-slate-50 ${
-              selectedAuthor === "KitoMCVN" ? "rounded-r-lg bg-cyan-600" : ""
-            }`}
-            onClick={() => setSelectedAuthor("KitoMCVN")}
-          >
-            Kito
-          </button>
+        <div className="absolute mt-2 flex items-center border border-slate-300/10">
+          {
+            ["IamPierrot", "CaSapChim", "KitoMCVN"].map((author) => (
+              <div
+                key={author}
+                className="rounded-l-lg rounded-r-lg"
+              >
+                <button
+                  className={`border-r border-slate-300/10 px-4 py-2 text-slate-50 duration-300 transition-all ${
+                    selectedAuthor === author ? " bg-cyan-600 -translate-y-5" : ""
+                  }`}
+                  onClick={() => { handleAuthorChange(author as Author); }}
+                >
+                  {author}
+                </button>
+              </div>
+            ))
+          }
         </div>
       </div>
       <div className="mt-8 grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {repos.map((i) => (
+        {repos.slice(0, toLoadMore).map((i) => (
           <div
             key={i.id}
             className="relative flex h-52 cursor-pointer flex-col justify-between rounded-xl bg-slate-800 p-4   duration-300 hover:bg-slate-700 "
@@ -130,6 +127,14 @@ export const RepoCards = () => {
           language={selectedRepo?.language}
         />
       </div>
+        <div className="flex w-full justify-center mt-4">
+          <button
+          className="bg-cyan-600 px-4 py-2 rounded-lg hover:opacity-80 duration-300"
+            onClick={() => handleLoadMore(3)}
+          >
+            Load More
+          </button>
+        </div>
     </div>
   );
 };
