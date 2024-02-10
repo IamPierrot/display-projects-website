@@ -13,6 +13,7 @@ export const RepoCards = () => {
   const [selectedRepo, setSelectedRepo] = useState<RepoCardsProp | null>();
   const [selectedAuthor, setSelectedAuthor] = useState<Author>("IamPierrot");
   const [toLoadMore, setToLoadMore] = useState<number>(3);
+  const [displayBtn, setDisplayBtn] = useState<boolean>(true);
 
   useEffect(() => {
     const repositories: RepoCardsProp[] = [];
@@ -52,7 +53,15 @@ export const RepoCards = () => {
     setToLoadMore(3);
   }
 
-  const handleLoadMore = (num: number) => {
+  const handleLoadMore = async (num: number) => {
+    const repos = await getAllRespo();
+    const remainingReposToLoad = repos["IamPierrot"][0].length - toLoadMore - 3 - 1;
+
+    if (remainingReposToLoad < 0) {
+      
+    }
+
+    console.log(remainingReposToLoad);
     setToLoadMore(toLoadMore + num);
   }
 
@@ -127,14 +136,17 @@ export const RepoCards = () => {
           language={selectedRepo?.language}
         />
       </div>
+      {
+        displayBtn &&
         <div className="flex w-full justify-center mt-4">
-          <button
-          className="bg-cyan-600 px-4 py-2 rounded-lg hover:opacity-80 duration-300"
-            onClick={() => handleLoadMore(3)}
-          >
-            Load More
-          </button>
+            <button
+            className="bg-cyan-600 px-4 py-2 rounded-lg hover:opacity-80 duration-300"
+              onClick={() => handleLoadMore(3)}
+            >
+              Load More
+            </button>
         </div>
+      }
     </div>
   );
 };
