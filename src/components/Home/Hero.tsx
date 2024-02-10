@@ -1,17 +1,41 @@
 import { TypeAnimation } from "react-type-animation";
 
 export const Hero = () => {
+  const baiViet = [
+    {
+      title: "Bài viết 1",
+      user: "Cá",
+      avatar: "https://avatars.githubusercontent.com/u/117553015?v=",
+      role: "Coder",
+      content: "sadfghuiuoilmnfdret78io",
+    },
+    {
+      title: "Bài viết 2",
+      user: "Quẹ",
+      avatar: "https://avatars.githubusercontent.com/u/123743390?v=4",
+      role: "Thiểu Năng",
+      content: "ádfghjkl4",
+    },
+    {
+      title: "Bài viết 3",
+      user: "Kito",
+      avatar: "https://avatars.githubusercontent.com/u/95675413?v=4",
+      role: "UI/UX",
+      content: "wdssssssfgrewdfgtrefgbgt54rghy65t",
+    },
+  ];
+
   return (
     <div className="my-20">
-      <div className="">
-        <h1 className="mx-auto py-6 font-default text-4xl font-extrabold text-slate-50">
+      <div className="text-center">
+        <h1 className="mx-auto  my-6 font-default text-5xl font-extrabold text-slate-50">
           <TypeAnimation
             sequence={[
               "Hello!",
               1000,
               "Welcome to our website.",
               1000,
-              "This website is made by Kry and Pierrot.",
+              "This website is made by Kry, Pierrot and KitoMC.",
               1000,
             ]}
             wrapper="span"
@@ -20,30 +44,34 @@ export const Hero = () => {
           />
         </h1>
       </div>
-      <div className="flex justify-around pb-6 pl-6">
-        <div className="text-centerfont- flex flex-col items-center justify-center text-slate-50">
-          <h1 className="text-2xl font-medium">Everyone's waifu</h1>
-          <span className="text-nowrap font-normal text-slate-300">
-            Anh huy ơi em nhớ anh
-          </span>
+      <div className="mt-20">
+        <div className="text-center">
+          <h1 className="mb-3 text-4xl font-extrabold text-slate-50">Blog</h1>
+          <p className="text-lg font-normal text-slate-300">Chia sẻ</p>
         </div>
-        <img
-          src="/image1.jpg"
-          alt="ảnh test"
-          className="h-2/6 w-2/6 rounded-3xl transition-all duration-300 ease-in-out hover:rotate-12 hover:shadow-lg"
-        />
-      </div>
-      <div className="flex justify-around pr-6 pt-6">
-        <img
-          src="/image2.jpg"
-          alt="ảnh test"
-          className="h-2/6 w-2/6 rounded-3xl transition-all duration-300 ease-in-out hover:-rotate-12 hover:shadow-lg"
-        />
-        <div className="text-centerfont- flex flex-col items-center justify-center text-slate-50">
-          <h1 className="text-2xl font-medium">Vẹt's Waifu</h1>
-          <span className="text-nowrap font-normal text-slate-300">
-            Waifu thứ 2 của Vẹt
-          </span>
+        <div className="mt-6 grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {baiViet.map(({ title, user, avatar, content, role }) => (
+            <div
+              key={user}
+              className="flex flex-col gap-y-4 rounded-lg bg-slate-800 p-6 "
+            >
+              <div className="flex items-center gap-4">
+                <img
+                  className="size-14 overflow-hidden rounded-full"
+                  src={avatar}
+                  alt={user}
+                />
+                <div>
+                  <p className="font-bold text-slate-50">{user}</p>
+                  <p className="text-slate-300">{role}</p>
+                </div>
+              </div>
+              <div>
+                <h2 className="font-medium text-slate-50">{title}</h2>
+                <p className="text-slate-300">{content}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
