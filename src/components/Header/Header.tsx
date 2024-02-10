@@ -1,5 +1,5 @@
 import { useState, useEffect, memo } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,
@@ -12,18 +12,13 @@ import {
 export const Header = memo(() => {
   const [styleStickMenu, setStyleStickMenu] = useState("");
   const [styleLink, setStyleLink] = useState("");
-
-  const [active, setActive] = useState(() => {
-    const storedActive = localStorage.getItem("activeTab");
-    return storedActive ?? "HOME";
-  });
+  const [active, setActive] = useState("");
+  const location = useLocation();
 
   useEffect(() => {
-    localStorage.setItem("activeTab", active);
-    return () => {
-      localStorage.removeItem("activeTab");
-    };
-  }, [active]);
+    const linkWebsite = location.pathname.split("/")[1].toLowerCase();
+    setActive(linkWebsite || "home");
+  }, [location]);
 
   const items = [
     { name: "Home", icon: <FontAwesomeIcon icon={faHouse} />, link: "/" },

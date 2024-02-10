@@ -16,19 +16,18 @@ export const UtilityBar = memo(() => {
           onClick={() => {
             setToggleBar(!toggleBar);
           }}
-          className="absolute -right-5  top-1/2 h-11 w-11 -translate-y-[55%] rounded-full bg-slate-600"
+          className={`absolute -right-5 top-1/2 h-11 w-11 ${
+            toggleBar ? "translate-x-0" : "translate-x-3"
+          } -translate-y-[55%] rounded-full bg-slate-600 transition-transform duration-300`}
         >
           <i
             className={`fa fa-chevron-right ${
               toggleBar ? "rotate-180" : "rotate-0"
-            } textxl font-bold text-slate-50 transition-all duration-300 ease-linear`}
+            } items-center text-center text-xl font-bold text-slate-50 transition-all duration-300 ease-linear`}
           ></i>
         </button>
         <nav className="flex max-h-full flex-col gap-y-4 pt-4">
-          <a
-            href="#"
-            className="group relative rounded-xl p-2 text-cyan-600 hover:bg-slate-600"
-          >
+          <button className="group relative rounded-xl p-2 text-cyan-600 hover:bg-slate-600">
             <svg
               className="h-6 w-6 stroke-current"
               width="24"
@@ -58,7 +57,7 @@ export const UtilityBar = memo(() => {
                 Layouts <span className="text-gray-400">(Y)</span>
               </div>
             </div>
-          </a>
+          </button>
           <a
             href="#"
             className="text-gary-400 group relative rounded-xl p-2 hover:bg-slate-600"
