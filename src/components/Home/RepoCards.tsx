@@ -68,16 +68,15 @@ export const RepoCards = () => {
           This is the showcase of{" "}
           <span className="font-medium text-cyan-500">{selectedAuthor}</span> products.
         </p>
-        <div className="absolute mt-2 flex items-center border border-slate-300/10">
+        <div className="absolute mt-2 flex items-center border border-slate-300/10 rounded-l-lg rounded-r-lg overflow-hidden">
           {
             ["IamPierrot", "CaSapChim", "KitoMCVN"].map((author) => (
               <div
                 key={author}
-                className="rounded-l-lg rounded-r-lg"
               >
                 <button
                   className={`border-r border-slate-300/10 px-4 py-2 text-slate-50 duration-300 transition-all ${
-                    selectedAuthor === author ? " bg-cyan-600 -translate-y-5" : ""
+                    selectedAuthor === author ? " bg-cyan-600" : ""
                   }`}
                   onClick={() => { handleAuthorChange(author as Author); }}
                 >
