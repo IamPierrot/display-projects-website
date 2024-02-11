@@ -5,7 +5,7 @@ export const UtilityBar = memo(() => {
   return (
     <aside
       className={`fixed top-1/2 flex h-1/2 w-fit transform ${
-        toggleBar ? "translate-x-0" : "-translate-x-[80%]"
+        toggleBar ? "translate-x-0" : "-translate-x-[87%]"
       }  items-center justify-center rounded-e-full p-0 align-middle text-slate-50 transition-transform duration-300 ease-in-out`}
     >
       <div className="flex w-14 flex-col items-center rounded-e-xl border-r border-slate-600 bg-slate-700">
