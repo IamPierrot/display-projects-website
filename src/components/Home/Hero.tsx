@@ -7,7 +7,7 @@ export const Hero = () => {
       user: "Cá",
       avatar: "https://avatars.githubusercontent.com/u/117553015?v=",
       role: "Coder",
-      content: "sadfghuiuoilmnfdret78io",
+      content: "Tôi sinh năm 5298. Vào thời đại này, con người gần như đạt tới sự bất tử. Các con robot giờ đây chung sống hòa thuận với mọi người. Vì nhà quá nghèo, không có một con robot nào nên tôi đã nhen nhóm trong mình một hoài bão, ước mơ. Đó chính là trả thành một developer. Tôi mong ước rằng tôi sẽ có thể tạo ra một con robot cho riêng mình.",
     },
     {
       title: "Bài viết 2",
